@@ -78,7 +78,7 @@ void setLedPins(int tapperNum, boolean[] values) {
 }
 
 
-void loop() {
+void draw() {
   
   if (frameCounter == SHIFT_DELAY) {
     setPatterns(shiftCounter);
