@@ -70,7 +70,7 @@ void setPatterns(int index) {
 
 // Function to set LED pins low/high based on array of boolean values
 void setLedPins(int tapperNum, boolean[] values) {
-  for (int i=0; i < PINS[tapperNum].length ; i++)
+  for (int i=0; i < PINS[tapperNum].length - 1 ;i++)
     if (values[i] == true)
       arduino.digitalWrite(PINS[tapperNum][i], Arduino.HIGH);
     else
@@ -82,6 +82,7 @@ void draw() {
   
   if (frameCounter == SHIFT_DELAY) {
     setPatterns(shiftCounter);
+    frameCounter = 0;
     shiftCounter++;
     if (shiftCounter == patternList.length)
       shiftCounter = 0;
@@ -90,7 +91,9 @@ void draw() {
   for (int i=0; i < NUM_TAPPERS; i++) {
     tapperArray[i].advanceOneFrame();
     setLedPins(i, tapperArray[i].getLedStates());
+    println(tapperArray[i].getLedStates());
   }
+  delay(FRAME_DELAY);
   frameCounter++;
   
 }
