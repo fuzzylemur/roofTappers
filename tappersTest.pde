@@ -49,7 +49,7 @@ void setup() {
 // Parse patterns from txt file to an array of pattern objects
 void parsePatterns() {
   String[] lines;
-  lines = loadStrings("patterns.txt");
+  lines = loadStrings("patterns");
   patternList = new Pattern[lines.length];
   for (int i=0; i < lines.length; i++) {
     patternList[i] = new Pattern();
